@@ -24,7 +24,6 @@ function App() {
             </form>
           </div>
           <div className="row d-flex flex-row">
-            
             <CryptoList search={search} />
           </div>
         </div>

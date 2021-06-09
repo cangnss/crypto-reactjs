@@ -1,45 +1,10 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React, { useState,useEffect } from 'react'
 import { Modal, Button } from 'react-bootstrap'
-// import {
-//     XYPlot,
-//     XAxis,
-//     YAxis,
-//     HorizontalGridLines,
-//     VerticalGridLines,
-//     LineSeries
-// } from 'index';
+import CryptoGraphic from './CryptoGraphic';
+
 
 
 function Crypto({ coinId, coinImage, name, symbol, price, lastUpdated, totalVolume, currentPrice, high24h, low24h, marketCapChange }) {
-
-    const [graph, setGraph] = useState([]);
-    const getGraph = () => {
-        axios.get(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart/range?vs_currency=usd&from=1392577232&to=1422577232`)
-            .then(response => {
-                setGraph(response.data)
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-    const executeFunctions = () => {
-        getGraph();
-        handleShow();
-    };
-
-    // const getRandomData = () => {
-    //     const randomYData = [...new Array(100)].map(() =>
-    //         Math.round(Math.random() * 40)
-    //     );
-    //     return randomYData.map((val, idx) => {
-    //         return { x: idx, y: val };
-    //     });
-    // }
-
-    // const firstData = this.getRandomData(graph.prices);
-    // const secondData = this.getRandomData();
-
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -101,24 +66,7 @@ function Crypto({ coinId, coinImage, name, symbol, price, lastUpdated, totalVolu
                             <p>{marketCapChange}</p>
                         </div>
                     </div>
-                    {/* <div style={{ display: 'flex' }}>
-                        <XYPlot width={300} height={300}>
-                            <HorizontalGridLines />
-                            <VerticalGridLines />
-                            <XAxis title="X Axis" />
-                            <YAxis title="Y Axis" />
-                            <LineSeries className="first-series" data={firstData} />
-                            <LineSeries className="second-series" data={secondData} />
-                        </XYPlot>
-                        <XYPlot yPadding={60} width={300} height={300}>
-                            <HorizontalGridLines />
-                            <VerticalGridLines />
-                            <XAxis title="X Axis" />
-                            <YAxis title="Y Axis" />
-                            <LineSeries className="first-series" data={firstData} />
-                            <LineSeries className="second-series" data={secondData} />
-                        </XYPlot>
-                    </div> */}
+                    <CryptoGraphic coinId={coinId} />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
@@ -127,7 +75,7 @@ function Crypto({ coinId, coinImage, name, symbol, price, lastUpdated, totalVolu
                 </Modal.Footer>
             </Modal>
             <div className="card-footer">
-                <Button variant="primary" onClick={executeFunctions}>Learn more <strong>{name}</strong></Button>
+                <Button variant="primary" onClick={handleShow}>Learn more <strong>{name}</strong></Button>
             </div>
         </div>
     )
