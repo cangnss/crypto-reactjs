@@ -1,9 +1,10 @@
 import './App.css';
-import Search from './components/Search';
 import CryptoList from './components/CryptoList';
 import { CryptoProvider } from './context/CryptoContext';
+import Search from './components/Search';
 
 function App() {
+
   return (
     <CryptoProvider>
       <div className="App">
@@ -12,7 +13,7 @@ function App() {
             <Search />
           </div>
           <div className="row d-flex flex-row">
-              <CryptoList />
+            <CryptoList />
           </div>
         </div>
       </div>
