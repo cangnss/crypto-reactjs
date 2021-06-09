@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Crypto Exchange Project
 
 [Live](https://unruffled-albattani-b7f9ef.netlify.app/)
 
